@@ -1,25 +1,20 @@
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        back_nums = list(nums)
+#!/usr/bin/python3
+# https://leetcode.com/problems/two-sum
 
-        nums.sort()
+from typing import List
 
-        start = 0
-        end = len(nums) - 1
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        
+        orig_dict = {}
+        for i in range(0, len(nums)):
+            curr_nums = nums[i]
+                
+            if target - curr_nums in orig_dict:
+                a = orig_dict[target - curr_nums]
+                ret_list = [i,a]
+                ret_list.sort()
+                return ret_list
+            else:
+                orig_dict[curr_nums] = i
 
-        while start < end:
-            sum_start_end = nums[start] + nums[end]
-            if sum_start_end == target:
-                break
-
-            if sum_start_end > target:
-                end -= 1
-            elif sum_start_end < target:
-                start += 1
-
-        return [back_nums.index(nums[start]), len(back_nums) - 1 - back_nums[::-1].index(nums[end])]
