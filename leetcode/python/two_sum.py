@@ -11,10 +11,7 @@ class Solution:
             
             curr_num = nums[i]    
             if target - curr_num in orig_dict:
-                a = orig_dict[target - curr_num]
-                ret_list = [i,a]
-                ret_list.sort()
-                return ret_list
+                return [orig_dict[target - curr_num], i]
             else:
                 orig_dict[curr_num] = i
 
