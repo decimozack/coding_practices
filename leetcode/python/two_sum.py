@@ -8,13 +8,13 @@ class Solution:
         
         orig_dict = {}
         for i in range(0, len(nums)):
-            curr_nums = nums[i]
-                
-            if target - curr_nums in orig_dict:
-                a = orig_dict[target - curr_nums]
+            
+            curr_num = nums[i]    
+            if target - curr_num in orig_dict:
+                a = orig_dict[target - curr_num]
                 ret_list = [i,a]
                 ret_list.sort()
                 return ret_list
             else:
-                orig_dict[curr_nums] = i
+                orig_dict[curr_num] = i
 
