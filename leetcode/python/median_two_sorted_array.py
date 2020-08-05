@@ -15,10 +15,7 @@ class Solution:
 
         is_even = total % 2 == 0
         
-        if total % 2 == 0:
-            number_elems = int(total / 2)
-        else:
-            number_elems = int((total + 1) / 2)
+        number_elems = int((total + 1) / 2)
         
         small_list = nums1
         big_list = nums2
