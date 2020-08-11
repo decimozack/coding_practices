@@ -1,15 +1,21 @@
 #!/usr/bin/python3
-#https://leetcode.com/problems/median-of-two-sorted-arrays/
+# https://leetcode.com/problems/median-of-two-sorted-arrays/
+# for this version of the code we assuming that there is no Max or Min value that we can rely on
+# thus, for all the index out of bound cases we will use None
+
 from typing import List
 
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
- 
+        
+        # if nums1 is not the smaller list, we will call the method again with switched order
+        # this ensure that nums1 will always be the smaller list
         if len(nums1) > len(nums2):
             return self.findMedianSortedArrays(nums2, nums1)
-
+        
         total = len(nums1) + len(nums2)
         is_even = total % 2 == 0
+        # we add 1 to the total here to compensate for odd length list. 
         number_elems = int((total + 1) / 2)
         
         small_list = nums1
@@ -17,7 +23,8 @@ class Solution:
         
         start = 0
         end = len(nums1)
-
+        
+        # here we do a binary search
         while start <= end:
 
             small_list_elems = (end + start) // 2
@@ -27,7 +34,7 @@ class Solution:
             sml_1 = small_list[small_list_elems] if small_list_elems < len(small_list) else None
             bl = big_list[big_list_elems - 1] if big_list_elems - 1 >= 0  else None
             bl_1 = big_list[big_list_elems] if big_list_elems < len(big_list) else None
-            
+           
             if sml is not None and bl is not None and sml >= bl:
 
                 # case 1.2 and 1.3
