@@ -18,6 +18,9 @@ def levelOrder(root):
     queue = []
     queue.append(root)
     queue.append(None)
+    
+    if not root:
+        return
 
     while queue:
         curr_node = queue.pop(0)
