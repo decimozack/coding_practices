@@ -33,7 +33,7 @@ def convert_pre_to_post(arr_size: int, pre_order: List[int]):
     for i in range(1, arr_size):
         insert_bst(root, pre_order[i])
 
-    final_list = postOrder(root)
+    final_list = post_order(root)
 
     print(' '.join(map(str, final_list)))
 
@@ -52,7 +52,7 @@ def insert_bst(root: Node, curr_num: int):
             root.right = Node(curr_num)
 
 
-def postOrder(root: Node):
+def post_order(root: Node):
     '''
     :param root: root of the given tree.
     :return the list containing post order traversal of the given binary tree.
@@ -63,8 +63,8 @@ def postOrder(root: Node):
     if root.left is None and root.right is None:
         return [root.data]
     
-    left_list = postOrder(root.left)
-    right_list = postOrder(root.right)
+    left_list = post_order(root.left)
+    right_list = post_order(root.right)
     root_list = [root.data]
     
     final_list = left_list + right_list + root_list
