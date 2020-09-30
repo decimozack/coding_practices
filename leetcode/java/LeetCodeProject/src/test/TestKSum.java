@@ -40,4 +40,5 @@ public class TestKSum {
 
         assertEquals(expected, result);
     }
+
 }
