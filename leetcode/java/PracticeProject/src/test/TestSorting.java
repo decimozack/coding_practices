@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
+import sorting.BubbleSort;
 import sorting.MergeSort;
 import sorting.QuickSort;
 
@@ -13,6 +14,7 @@ public class TestSorting {
 
     private MergeSort mergeSort = new MergeSort();
     private QuickSort quickSort = new QuickSort();
+    private BubbleSort bubbleSort = new BubbleSort();
 
     @Test
     public void testMergeSort() {
@@ -61,6 +63,24 @@ public class TestSorting {
         Arrays.sort(input);
         int[] expecteds = input;
         assertArrayEquals(expecteds, actuals);
+
+    }
+
+    @Test
+    public void testBubbleSort() {
+        int[] input = new int[] { 6, 1, 7, 9, 3, 8, 2, 5, 4, 0 };
+        bubbleSort.bubbleSort(input);
+        int[] input2 = new int[] { 6, 1, 7, 9, 3, 8, 2, 5, 4, 0 };
+        Arrays.sort(input2);
+        int[] expecteds = input2;
+        assertArrayEquals(expecteds, input);
+
+        input = new int[] { -100, 200, 20, 1, 0, 2, 3, -2, 3, -2, -5 };
+        bubbleSort.bubbleSort(input);
+        input2 = new int[] { -100, 200, 20, 1, 0, 2, 3, -2, 3, -2, -5 };
+        Arrays.sort(input2);
+        expecteds = input2;
+        assertArrayEquals(expecteds, input);
 
     }
 }
